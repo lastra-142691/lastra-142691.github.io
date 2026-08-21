@@ -22,13 +22,13 @@
 
         /* =========================
            HEADER
-        ========================= */
+        ========================== */
 
         header {
             background-color: #ffffff;
-            padding: 10px 60px;
+            padding: 22px 60px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             border-bottom: 1px solid #e5e7eb;
             position: sticky;
@@ -36,14 +36,8 @@
             z-index: 1000;
         }
 
-        .logo img {
-            height: 90px;
-            width: auto;
-            display: block;
-        }
-
         nav a {
-            margin-left: 25px;
+            margin: 0 18px;
             text-decoration: none;
             color: #333333;
             font-weight: 500;
@@ -56,25 +50,27 @@
 
         /* =========================
            HERO
-        ========================= */
+        ========================== */
 
         .hero {
             text-align: center;
-            padding: 120px 20px;
+            padding: 90px 20px 110px;
             background: linear-gradient(to bottom, #e9eef5, #f5f7fa);
         }
 
-        .hero h1 {
-            font-size: 52px;
-            margin-bottom: 20px;
-            color: #17365d;
+        .hero-logo {
+            width: 330px;
+            max-width: 75%;
+            height: auto;
+            margin: 0 auto 30px;
+            display: block;
         }
 
         .hero .tagline {
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #374151;
+            color: #17365d;
         }
 
         .hero p {
@@ -102,7 +98,7 @@
 
         /* =========================
            GENERAL SECTIONS
-        ========================= */
+        ========================== */
 
         .section {
             padding: 80px 20px;
@@ -130,7 +126,7 @@
 
         /* =========================
            ABOUT
-        ========================= */
+        ========================== */
 
         .about {
             background-color: #ffffff;
@@ -143,7 +139,7 @@
 
         /* =========================
            APPROACH
-        ========================= */
+        ========================== */
 
         .approach-container {
             display: flex;
@@ -175,7 +171,7 @@
 
         /* =========================
            SERVICES
-        ========================= */
+        ========================== */
 
         .services {
             background-color: #e9eef5;
@@ -213,7 +209,7 @@
 
         /* =========================
            PROJECT
-        ========================= */
+        ========================== */
 
         .project-content {
             max-width: 900px;
@@ -230,7 +226,7 @@
 
         /* =========================
            TEAM
-        ========================= */
+        ========================== */
 
         .team {
             background-color: #ffffff;
@@ -263,7 +259,7 @@
 
         /* =========================
            CONTACT
-        ========================= */
+        ========================== */
 
         .contact {
             text-align: center;
@@ -278,7 +274,7 @@
 
         /* =========================
            FOOTER
-        ========================= */
+        ========================== */
 
         footer {
             background-color: #17365d;
@@ -293,31 +289,25 @@
 
         /* =========================
            MOBILE
-        ========================= */
+        ========================== */
 
         @media (max-width: 768px) {
 
             header {
-                flex-direction: column;
-                padding: 15px 20px;
-            }
-
-            nav {
-                margin-top: 15px;
-                text-align: center;
+                padding: 18px 10px;
             }
 
             nav a {
-                margin: 0 8px;
-                font-size: 14px;
+                margin: 0 7px;
+                font-size: 13px;
             }
 
             .hero {
-                padding: 80px 20px;
+                padding: 70px 20px 90px;
             }
 
-            .hero h1 {
-                font-size: 40px;
+            .hero-logo {
+                width: 260px;
             }
 
             .hero .tagline {
@@ -340,10 +330,6 @@
 
     <header>
 
-        <div class="logo">
-            <img src="Logo.jpg" alt="OMF Automation Logo">
-        </div>
-
         <nav>
             <a href="#home">Home</a>
             <a href="#about">About Us</a>
@@ -362,7 +348,11 @@
 
     <section class="hero" id="home">
 
-        <h1>OMF Automation</h1>
+        <img
+            src="Logo.jpg"
+            alt="OMF Automation Logo"
+            class="hero-logo"
+        >
 
         <div class="tagline">
             Engineering Solutions. Automated Possibilities.
@@ -675,4 +665,3 @@
 </body>
 </html>
 ```
-
