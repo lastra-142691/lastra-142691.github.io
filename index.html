@@ -1,11 +1,18 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>OMF Automation</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -13,19 +20,26 @@
             color: #1f2937;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
             background-color: #ffffff;
-            padding: 20px 60px;
+            padding: 15px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #17365d;
+        .logo img {
+            height: 55px;
+            width: auto;
+            display: block;
         }
 
         nav a {
@@ -33,29 +47,41 @@
             text-decoration: none;
             color: #333333;
             font-weight: 500;
+            transition: 0.3s;
         }
 
         nav a:hover {
             color: #17365d;
         }
 
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
             text-align: center;
-            padding: 100px 20px;
-            background-color: #e9eef5;
+            padding: 120px 20px;
+            background: linear-gradient(to bottom, #e9eef5, #f5f7fa);
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 52px;
             margin-bottom: 20px;
             color: #17365d;
         }
 
+        .hero .tagline {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #374151;
+        }
+
         .hero p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
+            font-size: 19px;
+            max-width: 750px;
+            margin: 0 auto 35px;
+            line-height: 1.7;
         }
 
         .button {
@@ -66,75 +92,587 @@
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
+            transition: 0.3s;
         }
 
+        .button:hover {
+            background-color: #0f2745;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
         .section {
-            padding: 70px 20px;
-            text-align: center;
-            max-width: 1000px;
+            padding: 80px 20px;
+            max-width: 1100px;
             margin: auto;
         }
 
         .section h2 {
-            font-size: 32px;
+            text-align: center;
+            font-size: 36px;
             color: #17365d;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .section p {
             font-size: 18px;
-            line-height: 1.7;
+            line-height: 1.8;
         }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 45px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            background-color: #ffffff;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* =========================
+           APPROACH
+        ========================= */
+
+        .approach-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .approach-card {
+            background-color: #ffffff;
+            padding: 30px;
+            width: 230px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        .approach-card h3 {
+            color: #17365d;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .approach-card p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            background-color: #e9eef5;
+            max-width: none;
+        }
+
+        .services-content {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-card h3 {
+            color: #17365d;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           PROJECT
+        ========================= */
+
+        .project-content {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .project-highlight {
+            background-color: #ffffff;
+            border-left: 5px solid #17365d;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* =========================
+           TEAM
+        ========================= */
+
+        .team {
+            background-color: #ffffff;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: #f5f7fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .team-member h3 {
+            color: #17365d;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            text-align: center;
+            background-color: #e9eef5;
+            max-width: none;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             background-color: #17365d;
             color: white;
             text-align: center;
             padding: 25px;
-            margin-top: 40px;
         }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+
+            nav {
+                margin-top: 15px;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 0 8px;
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero .tagline {
+                font-size: 20px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
+    <!-- =========================
+         HEADER
+    ========================== -->
+
     <header>
-        <div class="logo">OMF Automation</div>
+
+        <div class="logo">
+            <img src="Logo.jpg" alt="OMF Automation Logo">
+        </div>
 
         <nav>
-            <a href="index.html">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Our Project</a>
-            <a href="#">Technology</a>
-            <a href="#">Contact</a>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#project">Our Project</a>
+            <a href="#technology">Technology</a>
+            <a href="#team">Our Team</a>
+            <a href="#contact">Contact</a>
         </nav>
+
     </header>
 
-    <section class="hero">
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section class="hero" id="home">
+
         <h1>OMF Automation</h1>
 
+        <div class="tagline">
+            Engineering Solutions. Automated Possibilities.
+        </div>
+
         <p>
-            Engineering automation solutions designed to improve
-            manufacturing efficiency, flexibility, and reliability.
+            We develop practical automation solutions designed to improve
+            manufacturing efficiency, consistency, reliability, and
+            operational flexibility.
         </p>
 
-        <a href="#project" class="button">Explore Our Project</a>
+        <a href="#project" class="button">
+            Explore Our Project
+        </a>
+
     </section>
+
+
+    <!-- =========================
+         ABOUT US
+    ========================== -->
+
+    <section class="section about" id="about">
+
+        <h2>About Us</h2>
+
+        <div class="about-content">
+
+            <p>
+                OMF Automation was founded with a simple objective:
+                to apply engineering and automation to solve real
+                manufacturing challenges.
+            </p>
+
+            <p>
+                Manufacturing environments often rely on processes that
+                have evolved over time, combining manual operations,
+                semi-automated equipment, and operator expertise. While
+                these processes can be effective, they may also present
+                opportunities to improve consistency, efficiency,
+                ergonomics, and long-term operational sustainability.
+            </p>
+
+            <p>
+                Our approach is to understand the process first, identify
+                where automation can provide meaningful value, and develop
+                solutions that integrate technology with the realities of
+                manufacturing.
+            </p>
+
+            <p>
+                We focus on practical engineering—not automation for the
+                sake of automation.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OUR APPROACH
+    ========================== -->
+
+    <section class="section" id="technology">
+
+        <h2>Our Approach</h2>
+
+        <p class="section-intro">
+            We approach automation as an engineering process, beginning
+            with an understanding of the operation and ending with a
+            solution designed around its real manufacturing requirements.
+        </p>
+
+        <div class="approach-container">
+
+            <div class="approach-card">
+                <h3>Understand</h3>
+                <p>
+                    Understand the existing process, requirements,
+                    limitations, and opportunities.
+                </p>
+            </div>
+
+            <div class="approach-card">
+                <h3>Engineer</h3>
+                <p>
+                    Develop solutions based on the actual needs of the
+                    process rather than applying a one-size-fits-all
+                    approach.
+                </p>
+            </div>
+
+            <div class="approach-card">
+                <h3>Automate</h3>
+                <p>
+                    Integrate automation, controls, equipment, sensors,
+                    and operator interfaces into the solution.
+                </p>
+            </div>
+
+            <div class="approach-card">
+                <h3>Improve</h3>
+                <p>
+                    Pursue improvements in efficiency, consistency,
+                    reliability, and long-term operation.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section class="section services" id="services">
+
+        <div class="services-content">
+
+            <h2>Our Capabilities</h2>
+
+            <p class="section-intro">
+                Our engineering approach combines automation technology
+                with practical manufacturing knowledge to develop
+                solutions for real-world applications.
+            </p>
+
+            <div class="service-grid">
+
+                <div class="service-card">
+                    <h3>Industrial Automation</h3>
+                    <p>
+                        Development of automated solutions for
+                        manufacturing operations and equipment.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Process Automation</h3>
+                    <p>
+                        Identify and automate repetitive or
+                        labor-intensive manufacturing operations.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <h3>PLC & HMI</h3>
+                    <p>
+                        Control systems and operator interfaces designed
+                        for automated equipment.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Equipment Integration</h3>
+                    <p>
+                        Integration of sensors, motion systems, machines,
+                        and control technologies.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Process Improvement</h3>
+                    <p>
+                        Engineering solutions aimed at reducing
+                        variability and improving operational efficiency.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Automation Upgrades</h3>
+                    <p>
+                        Modernization and automation opportunities for
+                        existing manufacturing equipment and processes.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECT
+    ========================== -->
 
     <section class="section" id="project">
-        <h2>Our Capstone Project</h2>
 
-        <p>
-            OMF Automation is developing an automated solution for a
-            manufacturing process, combining mechanical systems,
-            controls, sensors, motion control, and human-machine
-            interface technology.
-        </p>
+        <h2>Our Project</h2>
+
+        <div class="project-content">
+
+            <p>
+                Our current project focuses on the automation of a
+                legacy manufacturing process involving multiple manual
+                and semi-manual assembly operations.
+            </p>
+
+            <p>
+                The process involves the preparation of a precision
+                stylet, insertion into a body component with controlled
+                orientation, cap placement, and a press-fit operation.
+            </p>
+
+            <div class="project-highlight">
+
+                <p>
+                    The project explores how automation can be applied to
+                    improve process consistency, reduce operator
+                    dependency, and increase overall manufacturing
+                    efficiency while maintaining the precision required
+                    by the application.
+                </p>
+
+            </div>
+
+            <p>
+                The solution combines mechanical systems, sensors,
+                motion control, automation logic, and human-machine
+                interface technology into an integrated manufacturing
+                system.
+            </p>
+
+        </div>
+
     </section>
 
+
+    <!-- =========================
+         TEAM
+    ========================== -->
+
+    <section class="section team" id="team">
+
+        <h2>Our Team</h2>
+
+        <p class="section-intro">
+            OMF Automation is driven by a team with a shared interest
+            in automation, manufacturing technology, and practical
+            engineering solutions.
+        </p>
+
+        <div class="team-grid">
+
+            <div class="team-member">
+                <h3>Owen Pagan</h3>
+                <p>Automation & Engineering</p>
+            </div>
+
+            <div class="team-member">
+                <h3>Miguel Arroyo</h3>
+                <p>Automation & Engineering</p>
+            </div>
+
+            <div class="team-member">
+                <h3>Fernando Lastra</h3>
+                <p>Automation & Engineering</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="section contact" id="contact">
+
+        <div class="contact-content">
+
+            <h2>Let's Automate What's Next.</h2>
+
+            <p>
+                Have a manufacturing process that could benefit from
+                automation or engineering improvement?
+            </p>
+
+            <a href="mailto:contact@omfautomation.com" class="button">
+                Contact OMF Automation
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
-        © 2026 OMF Automation — Capstone Project
+
+        <p>
+            © 2026 OMF Automation
+        </p>
+
+        <p>
+            Engineering Solutions. Automated Possibilities.
+        </p>
+
     </footer>
 
 </body>
 </html>
+```
+
